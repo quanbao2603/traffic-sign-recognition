@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: traffic-sign-backend
+    restart: always
+    ports:
+      - "${BACKEND_PORT}:8000"
+    volumes:
+      - ./backend/temp:/app/temp
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+
+  frontend:
+    build: ./frontend
+    container_name: traffic-sign-frontend
+    restart: always
+    ports:
+      - "${FRONTEND_PORT}:80"
+    depends_on:
+      - backend

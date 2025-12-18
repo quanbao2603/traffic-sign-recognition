@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detection Results</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/layout/global.css">
+    <link rel="stylesheet" href="/static/css/layout/header.css">
+    <link rel="stylesheet" href="/static/css/layout/footer.css">
+
+    <link rel="stylesheet" href="/static/css/results/results.css">
+</head>
+
+<body>
+
+    {% include "layout/header.html" %}
+
+    <main class="results-container">
+
+        <h1>Detection History</h1>
+        <p>Lịch sử các lần nhận diện biển báo giao thông thành công</p>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('image')">🖼 Image Detection</button>
+            <button class="tab" onclick="switchTab('camera')">📷 Camera Detection</button>
+        </div>
+
+        <div class="clear-wrapper">
+            <button class="clear-btn" onclick="clearHistory()">
+                🗑 Clear Current History
+            </button>
+        </div>
+
+        <div id="imageResults" class="results-grid"></div>
+
+        <div id="cameraResults" class="results-grid hidden"></div>
+
+        <div id="emptyState" class="empty">
+            📭 Chưa có lịch sử nhận diện
+        </div>
+
+    </main>
+
+    {% include "layout/footer.html" %}
+
+    <script src="/static/js/results/results.js"></script>
+</body>
+
+</html>

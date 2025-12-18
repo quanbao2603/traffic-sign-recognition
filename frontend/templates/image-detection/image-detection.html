@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Image Detection</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/layout/global.css">
+    <link rel="stylesheet" href="/static/css/layout/header.css">
+    <link rel="stylesheet" href="/static/css/layout/footer.css">
+    <link rel="stylesheet" href="/static/css/image-detection/image-detection.css">
+</head>
+
+<body>
+
+    {% include "layout/header.html" %}
+
+    <main class="detect-container">
+
+        <h1>Image-based Traffic Sign Detection</h1>
+
+        <div class="upload-card">
+
+            <div class="image-preview">
+                <img id="preview" alt="Preview">
+                <span id="placeholder">No image selected</span>
+            </div>
+
+            <div class="action-buttons">
+                <input type="file" id="imageInput" accept="image/*" hidden>
+                <button class="btn secondary" onclick="selectImage()">Upload Image</button>
+                <button class="btn primary" onclick="detectImage()">Detect</button>
+            </div>
+
+        </div>
+
+        <div class="result-card" id="resultCard">
+            <h2>Detection Result</h2>
+
+            <div class="result-item">
+                <span>Detected Sign:</span>
+                <strong id="label">Waiting...</strong>
+            </div>
+
+            <div class="result-item">
+                <span>Accuracy:</span>
+                <strong id="confidence">---</strong>
+            </div>
+
+            <div class="loading" id="loadingText" style="display:none;">
+                🔄 Detecting image, please wait...
+            </div>
+        </div>
+
+
+    </main>
+
+    {% include "layout/footer.html" %}
+
+    <script src="/static/js/image-detection/image-detection.js"></script>
+</body>
+
+</html>

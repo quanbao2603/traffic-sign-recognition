@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Traffic Sign Recognition</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/layout/global.css">
+    <link rel="stylesheet" href="/static/css/layout/header.css">
+    <link rel="stylesheet" href="/static/css/layout/footer.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+
+<body>
+
+{% include "layout/header.html" %}
+ 
+<main>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Traffic Sign Recognition System</h1>
+            <p>
+                Hệ thống nhận diện biển báo giao thông sử dụng
+                <strong>Convolutional Neural Network (CNN)</strong>
+                cơ bản trong lĩnh vực
+                <strong>Computer Vision</strong>
+            </p>
+
+            <div class="hero-buttons">
+                <a href="/image" class="btn primary">Image Detection</a>
+                <a href="/camera" class="btn secondary">Camera Detection</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>System Features</h2>
+
+        <div class="feature-list">
+            <div class="feature-item">
+                <h3>🚦 CNN-based Classification</h3>
+                <p>
+                    Sử dụng mạng nơ-ron tích chập (CNN) cơ bản
+                    để trích xuất đặc trưng và phân loại
+                    các loại biển báo giao thông từ ảnh đầu vào.
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <h3>🧠 Feature Extraction</h3>
+                <p>
+                    Mô hình CNN học các đặc trưng quan trọng
+                    như hình dạng, màu sắc và ký hiệu
+                    của biển báo để phục vụ quá trình nhận diện.
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <h3>📷 Image & Camera Input</h3>
+                <p>
+                    Hệ thống hỗ trợ nhận diện thông qua ảnh tải lên
+                    hoặc dữ liệu thu được từ camera theo thời gian thực.
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <h3>⚡ Stable Backend</h3>
+                <p>
+                    Backend được xây dựng bằng FastAPI,
+                    đảm bảo hệ thống hoạt động ổn định
+                    và dễ mở rộng trong quá trình triển khai.
+                </p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+{% include "layout/footer.html" %}
+
+</body>
+</html>
