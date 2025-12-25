@@ -9,6 +9,7 @@ services:
       - "${BACKEND_PORT}:8000"
     volumes:
       - ./backend/temp:/app/temp
+      - ./frontend:/frontend
     environment:
       - TZ=Asia/Ho_Chi_Minh
 

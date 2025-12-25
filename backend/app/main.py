@@ -8,22 +8,18 @@ from app.api.pages import router as pages_router
 from app.api.results import router as results_router
 from app.core.config import TEMP_DIR 
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
-FRONTEND_DIR = BASE_DIR / "frontend"
-
-
 app = FastAPI(title="Traffic Sign Recognition")
 Base.metadata.create_all(bind=engine)
 
 app.mount(
     "/static",
-    StaticFiles(directory=FRONTEND_DIR / "static"),
+    StaticFiles(directory="/frontend/static"),
     name="static"
 )
 
 app.mount(
     "/asset",
-    StaticFiles(directory=FRONTEND_DIR / "asset"),
+    StaticFiles(directory="/frontend/static"),
     name="asset"
 )
 
