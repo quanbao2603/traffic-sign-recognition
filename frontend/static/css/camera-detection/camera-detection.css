@@ -124,3 +124,24 @@
     color: #0ea5e9;
     font-style: italic;
 }
+
+.camera-preview {
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.camera-preview.success {
+    border: 3px solid #22c55e;
+    box-shadow: 0 0 0 4px rgba(34,197,94,0.2);
+}
+
+.camera-preview.error {
+    border: 3px solid #ef4444;
+    box-shadow: 0 0 0 4px rgba(239,68,68,0.2);
+}
+
+.camera-preview canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}

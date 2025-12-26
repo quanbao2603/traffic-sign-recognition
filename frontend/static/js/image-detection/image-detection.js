@@ -10,6 +10,8 @@ document.getElementById("imageInput").addEventListener("change", (e) => {
     const preview = document.getElementById("preview");
     const placeholder = document.getElementById("placeholder");
 
+    preview.classList.remove("success", "error");
+
     if (selectedFile) {
         const reader = new FileReader();
         reader.onload = () => {
@@ -27,10 +29,14 @@ async function detectImage() {
         return;
     }
 
+    const preview = document.getElementById("preview");
+
     document.getElementById("label").innerText = "Detecting...";
     document.getElementById("confidence").innerText = "...";
     document.getElementById("loadingText").style.display = "block";
     document.getElementById("resultCard").style.display = "block";
+
+    preview.classList.remove("success", "error");
 
     const formData = new FormData();
     formData.append("file", selectedFile);
@@ -42,12 +48,12 @@ async function detectImage() {
         });
 
         const data = await response.json();
-
         document.getElementById("loadingText").style.display = "none";
 
         if (!data.success || !data.detections || data.detections.length === 0) {
             document.getElementById("label").innerText = "No traffic sign detected";
             document.getElementById("confidence").innerText = "N/A";
+            preview.classList.add("error");
             return;
         }
 
@@ -57,8 +63,11 @@ async function detectImage() {
         document.getElementById("confidence").innerText =
             (detection.confidence * 100).toFixed(2) + "%";
 
+        preview.classList.add("success");
+
     } catch (err) {
         console.error(err);
         document.getElementById("loadingText").innerText = "❌ Detection failed";
+        preview.classList.add("error");
     }
 }

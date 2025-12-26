@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <title>Camera Detection</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="/static/css/layout/global.css">
     <link rel="stylesheet" href="/static/css/layout/header.css">
     <link rel="stylesheet" href="/static/css/layout/footer.css">
@@ -15,49 +17,52 @@
 
 <body>
 
-{% include "layout/header.html" %}
+    {% include "layout/header.html" %}
 
-<main class="detect-container">
+    <main class="detect-container">
 
-    <h1>Camera-based Traffic Sign Detection</h1>
+        <h1>Camera-based Traffic Sign Detection</h1>
 
-    <div class="upload-card">
+        <div class="upload-card">
 
-        <div class="camera-preview">
-            <video id="video" autoplay muted></video>
-            <span id="placeholder">Camera is off</span>
+            <div class="camera-preview">
+                <video id="video" autoplay muted playsinline></video>
+                <canvas id="freezeCanvas"></canvas>
+                <span id="placeholder">Camera is off</span>
+            </div>
+
+
+            <div class="action-buttons">
+                <button class="btn secondary" onclick="startCamera()">Start Camera</button>
+                <button class="btn secondary" onclick="stopCamera()">Stop Camera</button>
+                <button class="btn primary" onclick="startDetecting()">Detect</button>
+            </div>
+
         </div>
 
-        <div class="action-buttons">
-            <button class="btn secondary" onclick="startCamera()">Start Camera</button>
-            <button class="btn secondary" onclick="stopCamera()">Stop Camera</button>
-            <button class="btn primary" onclick="detectFrame()">Detect</button>
+        <div class="result-card">
+            <h2>Detection Result</h2>
+
+            <div class="result-item">
+                <span>Detected Sign:</span>
+                <strong id="label">Waiting...</strong>
+            </div>
+
+            <div class="result-item">
+                <span>Accuracy:</span>
+                <strong id="confidence">---</strong>
+            </div>
+
+            <div class="loading" id="loadingText" style="display:none;">
+                🔄 Detecting frame, please wait...
+            </div>
         </div>
 
-    </div>
+    </main>
 
-    <div class="result-card">
-        <h2>Detection Result</h2>
+    {% include "layout/footer.html" %}
 
-        <div class="result-item">
-            <span>Detected Sign:</span>
-            <strong id="label">Waiting...</strong>
-        </div>
-
-        <div class="result-item">
-            <span>Accuracy:</span>
-            <strong id="confidence">---</strong>
-        </div>
-
-        <div class="loading" id="loadingText" style="display:none;">
-            🔄 Detecting frame, please wait...
-        </div>
-    </div>
-
-</main>
-
-{% include "layout/footer.html" %}
-
-<script src="/static/js/camera-detection/camera-detection.js"></script>
+    <script src="/static/js/camera-detection/camera-detection.js"></script>
 </body>
+
 </html>
